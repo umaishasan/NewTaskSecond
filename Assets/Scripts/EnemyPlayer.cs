@@ -6,6 +6,7 @@ public class EnemyPlayer : MonoBehaviour
 {
     List<GameObject> glist = new List<GameObject>();
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class EnemyPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void generateEnemyPlayer()
@@ -24,8 +25,9 @@ public class EnemyPlayer : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             glist.Add(GameObject.CreatePrimitive(PrimitiveType.Cube));
-            glist[i].transform.position = new Vector3(Random.Range(0, 10), 0.51f, Random.Range(0, 9));
-            glist[i].GetComponent<Renderer>().material.color;
+            glist[i].transform.position = new Vector3(Random.Range(-10, 10), 0.51f, Random.Range(0, 9));
+            glist[i].GetComponent<Renderer>().material.color = Color.HSVToRGB(Random.value, Random.value, Random.value);
+            glist[i].AddComponent<Rigidbody>().gameObject.active = true;
         }
     }
 }

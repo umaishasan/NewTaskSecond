@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Player1 : MonoBehaviour
 {
-    private float speed = 2f; 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float speed = 5f;
 
     // Update is called once per frame
     void Update()
@@ -41,11 +35,11 @@ public class Player1 : MonoBehaviour
         //rotate left, right
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.down * 10 * Time.deltaTime);
+            transform.Rotate(Vector3.down * 20f * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.up * 10 * Time.deltaTime);
+            transform.Rotate(Vector3.up * 20f * Time.deltaTime);
         }
     }
 }
