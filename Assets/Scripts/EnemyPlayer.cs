@@ -4,30 +4,41 @@ using UnityEngine;
 
 public class EnemyPlayer : MonoBehaviour
 {
-    List<GameObject> glist = new List<GameObject>();
+    public List<GameObject> g = new List<GameObject>();
+    public GameObject targetObj;
+    //public int countObj;
+    public int Counnnt;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        generateEnemyPlayer();
-        Debug.Log("Enemy generate");
+        StartCoroutine(GenerateEnemy(Counnnt));
+
+       // InvokeRepeating("GenerateEnemyPlayer", 1, Random.Range(2, 5));
+        Debug.Log("Enemy generating and decreasing count");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void generateEnemyPlayer()
-    {
-        for (int i = 0; i < 5; i++)
+   /* void GenerateEnemyPlayer()
+     {
+        if (countObj == 0)
         {
-            glist.Add(GameObject.CreatePrimitive(PrimitiveType.Cube));
-            glist[i].transform.position = new Vector3(Random.Range(-10, 10), 0.51f, Random.Range(0, 9));
-            glist[i].GetComponent<Renderer>().material.color = Color.HSVToRGB(Random.value, Random.value, Random.value);
-            glist[i].AddComponent<Rigidbody>().gameObject.active = true;
+            return;
+        }
+        targetObj = Instantiate(targetObj);
+        targetObj.transform.position = new Vector3(Random.Range(-9, 10), 0.51f, Random.Range(0, 9));
+        targetObj.GetComponent<Renderer>().material.color = Color.HSVToRGB(Random.value, Random.value, Random.value);
+        targetObj.GetComponent<Rigidbody>().gameObject.active = true;
+        countObj--;
+    }*/
+
+    IEnumerator GenerateEnemy(int Count)
+    {
+        for (int i = 0; i <= Count; i++)
+        {
+            yield return new WaitForSeconds(2);
+            g.Add(Instantiate(targetObj));
+            g[i].transform.position = new Vector3(Random.Range(-9, 10), 0.51f, Random.Range(0, 9));
+            g[i].GetComponent<Renderer>().material.color = Color.HSVToRGB(Random.value, Random.value, Random.value);
+            g[i].GetComponent<Rigidbody>().gameObject.active = true;
         }
     }
 }

@@ -19,7 +19,7 @@ public class ActionPlayer : MonoBehaviour
 
         if (player1.GetComponent<Renderer>().material.color == colliderObj.GetComponent<Renderer>().material.color)
         {
-            colliderObj.SetActive(false);
+            DestroyImmediate(colliderObj);
             Score += 5;
             scoreNumber.text = Score.ToString();
             Debug.Log("Object hit with same color and score is: "+Score);
