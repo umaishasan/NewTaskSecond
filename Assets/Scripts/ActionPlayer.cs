@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ActionPlayer : MonoBehaviour
 {
     public GameObject player1;
+    public GameObject goPanel;
     public Text scoreNumber;
     public Text lifeNumber;
     private int life = 110;
@@ -19,7 +20,7 @@ public class ActionPlayer : MonoBehaviour
 
         if (player1.GetComponent<Renderer>().material.color == colliderObj.GetComponent<Renderer>().material.color)
         {
-            DestroyImmediate(colliderObj);
+            Destroy(colliderObj);
             Score += 5;
             scoreNumber.text = Score.ToString();
             Debug.Log("Object hit with same color and score is: "+Score);
@@ -32,6 +33,7 @@ public class ActionPlayer : MonoBehaviour
             if(life <= 0)
             {
                 Destroy(this);
+                goPanel.SetActive(true);
             }
         }
     }
